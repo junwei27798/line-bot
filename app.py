@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 # 你的 Channel Access Token 與 Channel Secret
 line_bot_api = LineBotApi('DGAwp+loaZXLJFaMrtQwdFtUy0ANb8UWontj5espiXHjKnnZvZcjtpqF05jRj8UsxDPAznBT5Xfdz3Q/yGI5ng+Th/dS5Ta5CJfCb6GrDjbhpJan1yspuxMwv+vC5wgTjaRyRAYNKGnMzmHXpb5EBQdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('e45cafafae3ca8b8db075a92203363b3')
+handler = WebhookHandler('242ead87541e17927f571d7f1e351dcc')
 
 # 內存變數累加總支出（簡單個人用）
 total_expense = 0
