@@ -5,17 +5,19 @@ import os
 
 app = Flask(__name__)
 
-# 改成你自己的 Channel Access Token 與 Channel Secret
+# 你的 Channel Access Token 與 Channel Secret
 line_bot_api = LineBotApi('DGAwp+loaZXLJFaMrtQwdFtUy0ANb8UWontj5espiXHjKnnZvZcjtpqF05jRj8UsxDPAznBT5Xfdz3Q/yGI5ng+Th/dS5Ta5CJfCb6GrDjbhpJan1yspuxMwv+vC5wgTjaRyRAYNKGnMzmHXpb5EBQdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('e45cafafae3ca8b8db075a92203363b3')
 
-# 內存變數累加總支出
+# 內存變數累加總支出（簡單個人用）
 total_expense = 0
 
+# 測試連線用
 @app.route("/", methods=['GET'])
 def home():
     return "LINE Bot is running!"
 
+# LINE webhook route
 @app.route("/callback", methods=['POST'])
 def callback():
     signature = request.headers['X-Line-Signature']
@@ -24,8 +26,9 @@ def callback():
         handler.handle(body, signature)
     except Exception as e:
         print("Webhook error:", e)
-    return 'OK'  # LINE webhook 必須立刻回 200
+    return 'OK'  # LINE 必須在 webhook 立刻收到 200
 
+# 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     global total_expense
@@ -47,6 +50,7 @@ def handle_message(event):
         TextSendMessage(text=reply)
     )
 
+# Render 必須使用環境變數 PORT
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
