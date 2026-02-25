@@ -5,8 +5,8 @@ import sqlite3
 
 app = Flask(__name__)
 
-line_bot_api = LineBotApi('你的AccessToken')
-handler = WebhookHandler('你的ChannelSecret')
+line_bot_api = LineBotApi('DGAwp+loaZXLJFaMrtQwdFtUy0ANb8UWontj5espiXHjKnnZvZcjtpqF05jRj8UsxDPAznBT5Xfdz3Q/yGI5ng+Th/dS5Ta5CJfCb6GrDjbhpJan1yspuxMwv+vC5wgTjaRyRAYNKGnMzmHXpb5EBQdB04t89/1O/w1cDnyilFU=')
+handler = WebhookHandler('e45cafafae3ca8b8db075a92203363b3')
 
 # 建立資料庫
 conn = sqlite3.connect('data.db')
