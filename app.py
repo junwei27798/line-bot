@@ -12,6 +12,10 @@ handler = WebhookHandler('e45cafafae3ca8b8db075a92203363b3')
 # 內存變數累加總支出
 total_expense = 0
 
+@app.route("/", methods=['GET'])
+def home():
+    return "LINE Bot is running!"
+
 @app.route("/callback", methods=['POST'])
 def callback():
     signature = request.headers['X-Line-Signature']
